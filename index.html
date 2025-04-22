@@ -2,107 +2,72 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Daftar File Media Divisi</title>
+  <title>📁 Rekapitulasi Divisi</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f0f2f5;
+      background: #f0f0f0;
+      display: flex;
     }
-
     .sidebar {
-      width: 240px;
-      background-color: #003d3c;
+      width: 250px;
+      background-color: #2c3e50;
       color: white;
       height: 100vh;
-      position: fixed;
-      padding-top: 20px;
-    }
-
-    .sidebar h2 {
-      text-align: center;
-      font-size: 1.4em;
-      margin-bottom: 30px;
-    }
-
-    .menu-item {
-      padding: 15px 20px;
-      cursor: pointer;
-    }
-
-    .menu-item:hover {
-      background-color: #025453;
-    }
-
-    .submenu {
-      display: none;
-      background-color: #004d4c;
-      padding-left: 20px;
-    }
-
-    .submenu a {
-      display: block;
-      padding: 10px 0;
-      text-decoration: none;
-      color: white;
-      font-size: 0.95em;
-    }
-
-    .submenu a:hover {
-      text-decoration: underline;
-    }
-
-    .main-content {
-      margin-left: 260px;
       padding: 20px;
     }
-
-    h1 {
-      color: #333;
+    .sidebar h2 {
+      margin-top: 0;
+    }
+    .menu {
+      list-style: none;
+      padding: 0;
+    }
+    .menu > li {
+      cursor: pointer;
+      padding: 10px;
+      border-bottom: 1px solid #34495e;
+      position: relative;
+    }
+    .menu > li:hover {
+      background-color: #34495e;
+    }
+    .menu > li i {
+      margin-right: 8px;
+    }
+    .sub-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background-color: #34495e;
+    }
+    .sub-menu.open {
+      max-height: 500px;
+    }
+    .sub-menu a {
+      display: block;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-top: 1px solid #2c3e50;
+    }
+    .sub-menu a:hover {
+      background-color: #3d566e;
+    }
+    .content {
+      padding: 30px;
+      flex-grow: 1;
     }
   </style>
 </head>
 <body>
-
-<div class="sidebar">
-  <h2>📁 Rekapitulasi</h2>
-
-  <div class="menu-item" onclick="toggleSubmenu('iku')">📊 IKU</div>
-  <div class="submenu" id="iku">
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/EU0Nvw2tS_lOqE0SrPGlCwQBbWaCMfRPwwA1220ar9gTKQ?e=tS6gyn" target="_blank">📄 IKU Pengawasan Strategis</a>
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/EXvjj1u1QupCi54L6Fqo2bEBe2wxx63jW2S5qaWjf1ktKw" target="_blank">📄 Usul WPS</a>
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/ERDcMpBFHbNKuZiBOxQoGVYB5_wMFtkVV9GUNPhEgKzJSw?e=boKAg3" target="_blank">📄 WP Was 1</a>
-    <a href="https://kemenkeu-my.sharepoint.com/:b:/g/personal/syaifullah_affandi_kemenkeu_go_id/EUeTNYWQy9pBqy53is2gY_IBGzkjtCteqldsLbm4EDzXiw?e=ymbwO6" target="_blank">📄 Target (PKM & PPM) - DRM > Kinerja Aktor</a>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('realisasi')">📈 Realisasi</div>
-  <div class="submenu" id="realisasi">
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/EYNraFG6GaBDh_uFagwvSzgBCRVbLfFR1ZzfuDwYB-JSpA?e=kVzVp7" target="_blank">📄 Capaian Penerimaan</a>
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/Eb1O9-Vpe69Mm_88mASMmI4B_aZMVBhQnZGpOFC7V3NJyQ?e=Vf2vMZ" target="_blank">📄 Capaian Pelaporan SPT</a>
-  </div>
-
-  <div class="menu-item" onclick="toggleSubmenu('laporan')">📂 Laporan</div>
-  <div class="submenu" id="laporan">
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/ERyO41de2s9LqFDPCWPeWLcBdGAnbhnBUrAEM3KaGGAZOQ" target="_blank">📄 Laporan PPI</a>
-    <a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/Eb-bhDlwucxDmojqRxLCSOoBiGL19R0rX_YAs4XTcHfbFQ" target="_blank">📄 Rencana Kerja Pengawasan 1</a>
-  </div>
-</div>
-
-<div class="main-content">
-  <h1>Selamat Datang 👋</h1>
-  <p>Silakan klik salah satu menu di sidebar untuk membuka dokumen yang tersedia.</p>
-</div>
-
-<script>
-  function toggleSubmenu(id) {
-    var submenu = document.getElementById(id);
-    if (submenu.style.display === "block") {
-      submenu.style.display = "none";
-    } else {
-      submenu.style.display = "block";
-    }
-  }
-</script>
-
-</body>
-</html>
+  <div class="sidebar">
+    <h2><i class="fas fa-folder"></i> Rekapitulasi</h2>
+    <ul class="menu">
+      <li onclick="toggleSubMenu(this)">
+        <i class="fas fa-chart-line"></i> IKU
+        <ul class="sub-menu">
+          <li><a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/EU0Nvw2tS_lOqE0SrPGlCwQBbWaCMfRPwwA1220ar9gTKQ?e=tS6gyn" target="_blank">📄 IKU Pengawasan Strategis</a></li>
+          <li><
