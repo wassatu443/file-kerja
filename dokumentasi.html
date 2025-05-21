@@ -2,57 +2,69 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Galeri Dokumentasi</title>
+  <title>Slideshow Dokumentasi</title>
   <style>
     body {
       font-family: sans-serif;
-      text-align: center;
-      background: #f4f4f4;
-    }
-    h1 {
-      margin-top: 20px;
-    }
-    .gallery {
+      background-color: #000;
+      margin: 0;
       display: flex;
-      flex-wrap: wrap;
+      align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 20px;
+      height: 100vh;
     }
-    .gallery img {
-      width: 250px;
+    .slideshow-container {
+      position: relative;
+      width: 80%;
+      max-width: 800px;
+      height: auto;
+    }
+    .slideshow-container img {
+      width: 100%;
+      height: auto;
       border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-      transition: transform 0.3s ease;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
-    .gallery img:hover {
-      transform: scale(1.05);
+    .slideshow-container img.active {
+      opacity: 1;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <h1>📸 Dokumentasi Acak</h1>
-  <div class="gallery" id="gallery"></div>
+  <div class="slideshow-container" id="slideshow"></div>
 
   <script>
-    const totalImages = 32; // Jumlah gambar
-    const imageList = [];
+    const totalImages = 32;
+    const imagePaths = [];
 
     for (let i = 1; i <= totalImages; i++) {
-      imageList.push(`Image/1 (${i}).jpeg`); // Perhatikan huruf besar 'Image'
+      imagePaths.push(`Image/1 (${i}).jpeg`);
     }
 
-    // Acak urutan gambar
-    imageList.sort(() => Math.random() - 0.5);
+    // Acak urutan
+    imagePaths.sort(() => Math.random() - 0.5);
 
-    // Tampilkan gambar
-    const gallery = document.getElementById("gallery");
-    imageList.forEach(src => {
-      const img = document.createElement("img");
+    const container = document.getElementById('slideshow');
+    const images = [];
+
+    // Tambahkan semua gambar ke dalam container, tapi sembunyikan (opacity 0)
+    imagePaths.forEach((src, index) => {
+      const img = document.createElement('img');
       img.src = src;
-      img.alt = "Dokumentasi";
-      gallery.appendChild(img);
+      if (index === 0) img.classList.add('active');
+      container.appendChild(img);
+      images.push(img);
     });
+
+    let current = 0;
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 3000); // Ganti gambar setiap 3 detik
   </script>
 </body>
 </html>
