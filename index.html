@@ -67,6 +67,24 @@
       height: 800px;
       border: none;
     }
+    @keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.special-feedback {
+  color: #ffd700; /* warna emas */
+  font-weight: bold;
+  animation: blink 1s infinite;
+  position: relative;
+}
+
+.special-feedback::before {
+  content: "⭐ ";
+  color: gold;
+}
+
   </style>
 </head>
 <body>
@@ -95,6 +113,20 @@
           <li><a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/ERyO41de2s9LqFDPCWPeWLcBdGAnbhnBUrAEM3KaGGAZOQ" target="_blank">📄 Laporan PPI</a></li>
           <li><a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/Eb-bhDlwucxDmojqRxLCSOoBiGL19R0rX_YAs4XTcHfbFQ" target="_blank">📄 Rencana Kerja Pengawasan 1</a></li>
           <li><a href="https://kemenkeu-my.sharepoint.com/:x:/g/personal/syaifullah_affandi_kemenkeu_go_id/EaEs6YvmClhNrjr21apNV6MBBdlHQpxFZb9BOdbECC0h0w" target="_blank">📄 Pertambahan Pembayaran</a></li>
+        </ul>
+      </li>
+      <li onclick="toggleSubMenu(this)">
+        <i class="fa fa-desktop"></i> Monitoring Kanwil
+        <ul class="sub-menu">
+          <li><a href="https://kemenkeu.sharepoint.com/:x:/s/timbimeks1502021-/EUHeItsKBXVNuj2RyhoujdIB6KVJ6qtCC5KgDvAwuQhPvw?e=jeqms1" target="_blank">📄 Monitoring DPP & OS</a></li>
+          <li><a href="https://kemenkeu.sharepoint.com/:x:/s/timbimeks1502021-/EfP5Npy40bNPvOUv8oJxYhEBSSn2mf7jVhJUWZHpZjRmMg?e=33KX4g" target="_blank">📄 Monitoring LHA</a></li>
+          <li><a href="https://kemenkeu.sharepoint.com/:x:/s/timbimeks1502021-/Eaeg2SK_zKpLmjYVG8EPztIB83I6wvVtWYGPEZl1nfjCSA?e=yV9Prz" target="_blank">📄 Monitoring Pengawasan '24</a></li>
+        </ul>
+      </li>
+      <li onclick="toggleSubMenu(this)">
+        <i class="fa fa-pencil-square-o"></i> Need Feedback
+        <ul class="sub-menu">
+          <li><a href="https://kemenkeu-my.sharepoint.com/:x:/r/personal/sisilia_chreti_kemenkeu_go_id/_layouts/15/Doc.aspx?sourcedoc=%7B03C72CA5-4935-47C3-8F5F-E45A097E2923%7D&file=Data%20WA%20Blast%20SPT%20Masa_WA%20Terdaftar%20n%20tidak%201.xlsx&action=default&mobileredirect=true" class="special-feedback">⭐ Need feedback</a></li>
         </ul>
       </li>
       <li onclick="toggleSubMenu(this)">
