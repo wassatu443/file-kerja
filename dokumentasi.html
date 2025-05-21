@@ -12,13 +12,16 @@
       align-items: center;
       justify-content: center;
       height: 100vh;
+      position: relative;
     }
+
     .slideshow-container {
       position: relative;
       width: 80%;
       max-width: 800px;
       height: auto;
     }
+
     .slideshow-container img {
       width: 100%;
       height: auto;
@@ -27,13 +30,39 @@
       opacity: 0;
       transition: opacity 1s ease-in-out;
     }
+
     .slideshow-container img.active {
       opacity: 1;
       z-index: 1;
     }
+
+    /* Tombol Home */
+    .home-button {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #ffffffcc;
+      color: #000;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      z-index: 999;
+    }
+
+    .home-button:hover {
+      background-color: #ddd;
+    }
   </style>
 </head>
 <body>
+
+  <!-- Tombol Home -->
+  <a href="index.html" class="home-button">🏠 Home</a>
+
   <div class="slideshow-container" id="slideshow"></div>
 
   <script>
