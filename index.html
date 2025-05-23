@@ -199,7 +199,7 @@
       if (!isOpen) subMenu.classList.add('open');
     }
   </script>
-  <script>
+<script>
   const text = "compiled.by.sai";
   const target = document.getElementById("footerText");
   let i = 0;
@@ -208,13 +208,13 @@
     if (i <= text.length) {
       target.textContent = text.substring(0, i) + "|";
       i++;
-      setTimeout(type, 100); // ketik pelan
+      setTimeout(type, 100);
     } else {
-      target.textContent = text; // hapus kursor di akhir
+      target.textContent = text;
     }
   }
 
-  type();
-  </script>
+  window.onload = type; // ✅ Jalankan hanya setelah halaman selesai dimuat
+</script>
 </body>
 </html>
