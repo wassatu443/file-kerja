@@ -100,13 +100,16 @@
   margin-right: 6px;
 }
 .sidebar-footer {
-  margin-top: 30px;
-  padding-top: 20px;
+  margin-top: 100px;
+  padding-top: 10px;
   font-size: 12px;
   color: #bbb;
   text-align: center;
+  font-family: 'Courier New', monospace;
+  opacity: 0.7;
   border-top: 1px solid #444;
-  opacity: 0.6;
+  white-space: nowrap;
+  overflow: hidden;
 }
   </style>
 </head>
@@ -195,6 +198,23 @@
       });
       if (!isOpen) subMenu.classList.add('open');
     }
+  </script>
+  <script>
+  const text = "compiled.by.sai";
+  const target = document.getElementById("footerText");
+  let i = 0;
+
+  function type() {
+    if (i <= text.length) {
+      target.textContent = text.substring(0, i) + "|";
+      i++;
+      setTimeout(type, 100); // ketik pelan
+    } else {
+      target.textContent = text; // hapus kursor di akhir
+    }
+  }
+
+  type();
   </script>
 </body>
 </html>
