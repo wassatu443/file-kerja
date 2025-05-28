@@ -1,4 +1,4 @@
-I <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
@@ -66,34 +66,49 @@ I <!DOCTYPE html>
   <div class="slideshow-container" id="slideshow"></div>
 
   <script>
-    const totalImages = 47; // ganti jumlahnya sesuai jumlah file gambar
-    const imagePaths = [];
+    const totalImages = 47; // jumlah file, tanpa perlu tahu ekstensi
+    const baseNames = [];
 
     for (let i = 1; i <= totalImages; i++) {
-      imagePaths.push(`Image/1 (${i}).jpeg`);
+      baseNames.push(`Image/1 (${i})`);
     }
-
-    // Acak urutan
-    imagePaths.sort(() => Math.random() - 0.5);
 
     const container = document.getElementById('slideshow');
     const images = [];
+    let loadedCount = 0;
 
-    // Tambahkan semua gambar ke dalam container, tapi sembunyikan (opacity 0)
-    imagePaths.forEach((src, index) => {
-      const img = document.createElement('img');
-      img.src = src;
-      if (index === 0) img.classList.add('active');
-      container.appendChild(img);
-      images.push(img);
+    function tryLoadImage(baseName, callback) {
+      const img = new Image();
+      img.src = `${baseName}.jpeg`;
+      img.onload = () => callback(img);
+      img.onerror = () => {
+        img.src = `${baseName}.jpg`;
+        img.onload = () => callback(img);
+        img.onerror = () => {
+          console.warn(`Gagal memuat: ${baseName}.jpeg dan .jpg`);
+        };
+      };
+    }
+
+    baseNames.sort(() => Math.random() - 0.5); // acak urutan
+
+    baseNames.forEach((baseName, index) => {
+      tryLoadImage(baseName, img => {
+        if (index === 0) img.classList.add('active');
+        container.appendChild(img);
+        images.push(img);
+        loadedCount++;
+
+        if (loadedCount === baseNames.length) {
+          let current = 0;
+          setInterval(() => {
+            images[current].classList.remove('active');
+            current = (current + 1) % images.length;
+            images[current].classList.add('active');
+          }, 3000);
+        }
+      });
     });
-
-    let current = 0;
-    setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
-    }, 3000); // Ganti gambar setiap 3 detik
   </script>
 </body>
 </html>
