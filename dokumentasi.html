@@ -92,9 +92,9 @@
 
     baseNames.sort(() => Math.random() - 0.5); // acak urutan
 
-    baseNames.forEach((baseName, index) => {
+baseNames.forEach((baseName) => {
       tryLoadImage(baseName, img => {
-        if (index === 0) img.classList.add('active');
+        if (images.length === 0) img.classList.add('active'); // gambar pertama
         container.appendChild(img);
         images.push(img);
         loadedCount++;
